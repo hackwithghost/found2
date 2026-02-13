@@ -12,6 +12,14 @@ declare module "http" {
   }
 }
 
+// Augment Express Request to include User
+import { User } from "@shared/schema";
+declare global {
+  namespace Express {
+    interface User extends User {}
+  }
+}
+
 app.use(
   express.json({
     verify: (req, _res, buf) => {
